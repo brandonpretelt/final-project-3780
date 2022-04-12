@@ -1,5 +1,7 @@
 # Project Dashboard - Final Project 3780
 
+## App Features
+
 -   [ ] Add / Create project and add details
 -   [ ] Read project and project details
 -   [ ] Update project and edit details
