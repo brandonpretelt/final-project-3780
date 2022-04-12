@@ -1,0 +1,17 @@
+.project-card {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: var(--size-5);
+    aspect-ratio: 4/3;
+    width: 20em;
+    border-radius: 20px;
+    background-color: var(--blue-8);
+    cursor: pointer;
+}
+
+.project-card:hover,
+.project-card:focus {
+    opacity: 0.6;
+}
