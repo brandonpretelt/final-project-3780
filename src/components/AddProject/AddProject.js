@@ -1,7 +1,11 @@
 import './AddProject.css'
 import Button from '../Button'
+import Tag from '../Tag'
 
  const AddProject = ({buttonTextSave, buttonTextCancel, handleSubmit}) => {
+     let tagTextWIP = 'work in progress';
+     let tagTextDone = 'done';
+
      return (
         <div className="modal">
         <form onSubmit={handleSubmit}>
@@ -16,6 +20,10 @@ import Button from '../Button'
             <div className="button-group">
                 <Button className='test' buttonText={buttonTextCancel} />
                 <Button buttonText={buttonTextSave} />
+            </div>
+            <div className="tag-group">
+                <Tag tagText={tagTextDone} />
+                <Tag tagText={tagTextWIP} />
             </div>
         </form>
         </div> 
