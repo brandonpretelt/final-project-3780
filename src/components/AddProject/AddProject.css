@@ -1,15 +1,29 @@
-.modal {
+.modal,
+.modal-show {
     display: flex;
     flex-flow: column nowrap;
     padding: 1.25em;
     background-color: var(--blue-8);
     border-radius: 4px;
     margin: 0.25em;
+    position: absolute;
+}
+
+.modal-hide {
+    display: none;
 }
 
 label {
     display: block;
     font-size: var(--size-5);
+    margin-block: 1em 0.3em;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+    margin: 0 auto;
 }
 
 form input {

@@ -1,10 +1,14 @@
 import './App.css';
-import AddProject from './components/AddProject/AddProject';
-import ProjectCard from './components/ProjectCard/ProjectCard';
+import { useState } from 'react';
+import AddProject from './components/AddProject';
+import ProjectCard from './components/ProjectCard';
 
 function App() {
+
+    const [modalToggle, setModalToggle] = useState(false);
+
     const handleClick = () => {
-        console.log('i have been clicked!');
+        setModalToggle(modalToggle => !modalToggle)
     };
 
     const handleSubmit = (e) => {
@@ -18,9 +22,11 @@ function App() {
         <div className='container'>
             <ProjectCard handleClick={handleClick} />
             <AddProject
+                modalToggle={modalToggle}
                 buttonTextSave={buttonTextSave}
                 buttonTextCancel={buttonTextCancel}
                 handleSubmit={handleSubmit}
+                setModalToggle={setModalToggle}
             />
         </div>
     );
