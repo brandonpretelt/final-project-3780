@@ -1,0 +1,37 @@
+.modal {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 1.25em;
+    background-color: var(--blue-8);
+    border-radius: 4px;
+    margin: 0.25em;
+}
+
+label {
+    display: block;
+    font-size: var(--size-5);
+}
+
+form input {
+    margin-bottom: var(--size-3);
+}
+
+form ::placeholder {
+    color: var(--gray-7);
+}
+
+form input,
+form textarea {
+    font-size: var(--size-4);
+    padding: var(--size-2);
+}
+
+.button-group {
+    margin-block-start: 1em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-group button:last-child {
+    margin-inline-start: 1em;
+}
