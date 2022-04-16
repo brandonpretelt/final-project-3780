@@ -1,8 +1,11 @@
 import './Button.css'
 
-const Button = ({buttonText, btnTest}) => {
+const Button = ({buttonText, btnTest, addProjectTitle, projectName, modalToggle, setModalToggle}) => {
     return (
-        <button onClick={() => btnTest(buttonText)} data-btn={buttonText}>{buttonText}</button>
+        <button onClick={() => {
+                {buttonText === 'Save' ? addProjectTitle(projectName) : btnTest(buttonText) }
+                setModalToggle(modalToggle=>!modalToggle)
+        }}  data-btn={buttonText}>{buttonText}</button>
     )
 }
 

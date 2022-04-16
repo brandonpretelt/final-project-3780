@@ -1,8 +1,24 @@
 import './AddProject.css'
+import { useState, useContext } from "react";
+import { DashboardContext } from '../../contexts/DashboardContext';
 import Button from '../Button'
 import Tag from '../Tag'
 
- const AddProject = ({buttonTextSave, buttonTextCancel, handleSubmit, modalToggle, setModalToggle}) => {
+ const AddProject = ({buttonTextSave, buttonTextCancel, modalToggle, setModalToggle, createProjectTitleText}) => {
+     
+     const { addProjectTitle } = useContext(DashboardContext);
+     const [projectName, setProjectName] = useState('');
+     
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // dispatch({type: 'set_project_title', projectName: state.projectName})
+        setProjectName('')
+        
+        createProjectTitleText(projectName)
+        console.log(projectName);
+    };
+
      let tagTextWIP = 'work in progress';
      let tagTextDone = 'done';
 
@@ -19,7 +35,13 @@ import Tag from '../Tag'
                 <div className="text-field-group">
                     <div>
                         <label htmlFor="project-title"> Project Title </label>
-                        <input id="project-title" type="text" placeholder="Add your project... "/>
+                        <input 
+                            id="project-title" 
+                            type="text" 
+                            placeholder="Add your project... "
+                            value={projectName}
+                            onChange={(e) => setProjectName(e.target.value)}
+                            />
                     </div>
                     <div>
                         <label htmlFor="project-details"> Project Details </label>
@@ -47,7 +69,13 @@ import Tag from '../Tag'
                     </div>
                     <div className="button-group">
                         <Button buttonText={buttonTextCancel} btnTest={btnTest}/>
-                        <Button buttonText={buttonTextSave} btnTest={btnTest}/>
+                        <Button 
+                            modalToggle={modalToggle}
+                            setModalToggle={setModalToggle}
+                            buttonText={buttonTextSave} 
+                            addProjectTitle={addProjectTitle} 
+                            projectName={projectName} 
+                            setProjectName={setProjectName}/>
                     </div> 
                 </div>
      
@@ -57,3 +85,7 @@ import Tag from '../Tag'
  }
 
  export default AddProject
+
+ /*        // projectTitle = e.target.value;
+                                // createProjectTitleText(projectTitle);
+                                // setProjectTitle(projectTitle) */
