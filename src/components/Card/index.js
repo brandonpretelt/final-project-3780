@@ -1,16 +1,26 @@
 import './Card.css'
-import { useContext } from "react";
-import { DashboardContext } from "../../contexts/DashboardContext";
+import { useContext, useState } from "react";
 
-const Card = () => {
-    const { projects, deleteProjects } = useContext(DashboardContext);
-    console.log(projects, ' line 7 of card file')
+const Card = ({projects}) => {
+    const buttonText = 'delete';
+
+    const deleteProjects = (id) => {
+        return projects.filter((project) => id !== project.id);
+    }
+
     return (
         <>
-            {projects.map((test) => (
-                <div className='card' onClick={() => deleteProjects(test.id)}>
+            {projects && projects.map((test) => (
+                <div key={test.id} className='card' onClick={(e)=>{
+                    console.log(e.target);
+                }}>
                     <h3>{test.projectName}</h3>
+                    <button key={test.id} onClick={(e) => {
+                        e.stopPropagation();
+                        deleteProjects(test.id)
+                    }} >{buttonText}</button>
                 </div>
+                
             ))}
         </>
     )

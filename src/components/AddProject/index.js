@@ -6,13 +6,14 @@ import Tag from '../Tag'
 
  const AddProject = ({buttonTextSave, buttonTextCancel, modalToggle, setModalToggle, createProjectTitleText}) => {
      
-     const { addProjectTitle } = useContext(DashboardContext);
+     const { addProject } = useContext(DashboardContext);
      const [projectName, setProjectName] = useState('');
+     const [projectDetails, setProjectDetails] = useState('');
      
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // dispatch({type: 'set_project_title', projectName: state.projectName})
+        setProjectDetails('');
         setProjectName('')
         
         createProjectTitleText(projectName)
@@ -73,7 +74,7 @@ import Tag from '../Tag'
                             modalToggle={modalToggle}
                             setModalToggle={setModalToggle}
                             buttonText={buttonTextSave} 
-                            addProjectTitle={addProjectTitle} 
+                            addProject={addProject} 
                             projectName={projectName} 
                             setProjectName={setProjectName}/>
                     </div> 

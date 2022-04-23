@@ -5,21 +5,32 @@ export const initialState = {
 };
 
 export const actions = {
-    set_project_title: 'set_project_title',
-    delete_project: 'delete_project'
+    set_project: 'set_project',
+    delete_project: 'delete_project',
+    log_project: 'log_project'
 };
 
 export const dashboardReducer = (state, action) => {
     switch (action.type) {
-        case actions.set_project_title:
+        case actions.set_project:
             return {
                 projects: [
                     ...state.projects,
-                    { projectName: action.projectTitle, id: uuidv4() }
+                    {
+                        projectName: action.projectTitle,
+                        projectDetails: action.projectDetails,
+                        id: uuidv4()
+                    }
                 ]
             };
         case actions.delete_project:
+            console.log(state);
             return state.filter((project) => project.id !== action.id);
+        case actions.log_project:
+            console.log(state, actions);
+            return state.map((project) => {
+                console.log(project);
+            });
         default:
             return state;
     }

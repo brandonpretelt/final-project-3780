@@ -4,7 +4,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 export const DashboardContext = createContext('');
 
 export const DashboardContextProvider = (props) => {
-
+   /* dev branch shit */
     const localStorageCallback = () => {
         const dashboardData = localStorage.getItem('projects');
         return dashboardData ? JSON.parse(dashboardData) : initialState; 
@@ -18,13 +18,18 @@ export const DashboardContextProvider = (props) => {
 
     const value = {
         projects: state.projects,
-        addProjectTitle: (projectTitle) => {
-            dispatch({type: actions.set_project_title, projectTitle})
+        addProject: (projectTitle, details) => {
+            dispatch({type: actions.set_project, projectTitle, details})
             console.log(projectTitle, 'line 13 context file')
         },
         deleteProjects: (id) => {
             dispatch({type: actions.delete_project, id});
             console.log('deleted');
+        },
+        logProjects: () => {
+            dispatch({type: actions.log_project});
+            console.log('logged');
+            console.log(this.projects);
         }
     }
 
