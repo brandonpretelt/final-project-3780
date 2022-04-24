@@ -1,23 +1,13 @@
 import './AddProject.css'
-import { useState, useContext } from "react";
-import { DashboardContext } from '../../contexts/DashboardContext';
 import Button from '../Button'
 import Tag from '../Tag'
 
- const AddProject = ({buttonTextSave, buttonTextCancel, modalToggle, setModalToggle, createProjectTitleText}) => {
-     
-     const { addProject } = useContext(DashboardContext);
-     const [projectName, setProjectName] = useState('');
-     const [projectDetails, setProjectDetails] = useState('');
+ const AddProject = ({buttonTextSave, buttonTextCancel, modalToggle, setModalToggle}) => {
      
 
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        setProjectDetails('');
-        setProjectName('')
-        
-        createProjectTitleText(projectName)
-        console.log(projectName);
     };
 
      let tagTextWIP = 'work in progress';
@@ -36,13 +26,7 @@ import Tag from '../Tag'
                 <div className="text-field-group">
                     <div>
                         <label htmlFor="project-title"> Project Title </label>
-                        <input 
-                            id="project-title" 
-                            type="text" 
-                            placeholder="Add your project... "
-                            value={projectName}
-                            onChange={(e) => setProjectName(e.target.value)}
-                            />
+
                     </div>
                     <div>
                         <label htmlFor="project-details"> Project Details </label>
@@ -74,9 +58,7 @@ import Tag from '../Tag'
                             modalToggle={modalToggle}
                             setModalToggle={setModalToggle}
                             buttonText={buttonTextSave} 
-                            addProject={addProject} 
-                            projectName={projectName} 
-                            setProjectName={setProjectName}/>
+                        />
                     </div> 
                 </div>
      
@@ -87,6 +69,10 @@ import Tag from '../Tag'
 
  export default AddProject
 
- /*        // projectTitle = e.target.value;
-                                // createProjectTitleText(projectTitle);
-                                // setProjectTitle(projectTitle) */
+                                /*                         <input 
+                            id="project-title" 
+                            type="text" 
+                            placeholder="Add your project... "
+                            value={projects}
+                            onChange={(e) => setProjects(e.target.value)}
+                            /> */

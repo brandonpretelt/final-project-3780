@@ -5,7 +5,7 @@
 .tags {
     display: inline-block;
     color: var(--gray-1);
-    background-color: var(--gray-8);
+    background-color: var(--gray-9);
     padding: 0.7em;
     border-radius: 10px;
     cursor: pointer;
@@ -13,6 +13,10 @@
 
 .tags:hover {
     opacity: 0.8;
+}
+
+.active {
+    background-color: var(--gray-8);
 }
 
 .tags:last-child {
