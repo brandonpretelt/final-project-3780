@@ -8,10 +8,11 @@
     width: 20em;
     border-radius: 20px;
     background-color: var(--blue-8);
-    cursor: pointer;
+
 }
 
-.project-card:hover,
-.project-card:focus {
+.project-card span:hover,
+.project-card span:focus {
     opacity: 0.6;
+    cursor: pointer;
 }

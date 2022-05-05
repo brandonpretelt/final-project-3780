@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 
 const Card = ({projects}) => {
     const buttonText = 'delete';
-
+    console.log(projects)
     const deleteProjects = (id) => {
         return projects.filter((project) => id !== project.id);
     }

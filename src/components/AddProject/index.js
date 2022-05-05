@@ -1,9 +1,21 @@
 import './AddProject.css'
 import Button from '../Button'
 import Tag from '../Tag'
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
- const AddProject = ({buttonTextSave, buttonTextCancel, modalToggle, setModalToggle}) => {
-     
+ const AddProject = ({ projects, setProjects, buttonTextSave, buttonTextCancel, modalToggle, setModalToggle}) => {
+
+    
+    const addProject = (name) => {
+        setProjects([
+            ...projects,
+            {
+                id: uuidv4(),
+                projectTitle: name
+            }
+        ]);
+    };
 
     
     const handleSubmit = (e) => {
@@ -26,6 +38,19 @@ import Tag from '../Tag'
                 <div className="text-field-group">
                     <div>
                         <label htmlFor="project-title"> Project Title </label>
+                        {projects ? <input 
+                            type="text" 
+                            value={projects.title}
+                            onChange={(e)=>{
+                                const project = e.target.value
+                               setProjects([project])
+                               console.log(project)
+                                console.log(projects)
+                            }}
+                            /> :  <input 
+                            type="text" 
+                             /> }
+              
 
                     </div>
                     <div>
@@ -58,6 +83,7 @@ import Tag from '../Tag'
                             modalToggle={modalToggle}
                             setModalToggle={setModalToggle}
                             buttonText={buttonTextSave} 
+                            addProject={addProject}
                         />
                     </div> 
                 </div>

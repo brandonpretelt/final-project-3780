@@ -7,26 +7,19 @@ import Card from './components/Card';
 
 function App() {
     const [modalToggle, setModalToggle] = useState(false);
-    const [projects, setProjects] = useState([
-        {
-            id: uuidv4(),
-            projectTitle: 'New project',
-            projectDetails: 'Project details'
-        }
-    ]);
+    let [projects, setProjects] = useState([]);
     const handleClick = () => {
         setModalToggle((modalToggle) => !modalToggle);
     };
 
-    const addProject = (name, details) => {
-        setProjects([
-            ...projects,
-            {
-                id: uuidv4(),
-                projectTitle: name,
-                projectDetails: details
-            }
-        ]);
+    const displayData = () => {
+        projects = projects.map((project) => {
+            return {
+                id: project.id,
+                name: project.projectTitle,
+                details: project.projectDetails
+            };
+        });
     };
 
     let buttonTextSave = 'Save';
@@ -40,7 +33,11 @@ function App() {
                 buttonTextCancel={buttonTextCancel}
                 modalToggle={modalToggle}
                 setModalToggle={setModalToggle}
+                projects={projects}
+                setProjects={setProjects}
+                displayData={displayData}
             />
+            <Card projects={projects} />
         </div>
     );
 }
